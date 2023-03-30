@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-kube-app
+  labels:
+    app: nextjsweb
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: nextjsweb
+  template:
+    metadata:
+      labels:
+        app: nextjsweb
+    spec:
+      containers:
+      - name: nextjsclient
+        image: tariqulislam/nextjs-kube-integration:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+      restartPolicy: Always
