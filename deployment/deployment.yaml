@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nextjs-kube-app
+  name: nextjs-kube-private
   labels:
     app: nextjsweb
 spec:
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: nextjsclient
-        image: tariqulislam/nextjs-kube-integration:latest
+        image: richardaoede/nextjs-kube-private:latest
         imagePullPolicy: IfNotPresent
         resources:
           limits:

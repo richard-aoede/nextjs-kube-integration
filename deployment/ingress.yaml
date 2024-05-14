@@ -16,6 +16,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: nextjs-kube-service
+                name: nextjs-kube-private
                 port:
                   number: 3000
